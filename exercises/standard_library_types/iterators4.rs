@@ -1,6 +1,11 @@
 // iterators4.rs
 
 pub fn factorial(num: u64) -> u64 {
+    if num == 0 {
+        1
+    } else {
+        num * factorial(num - 1)
+    }
     // Complete this function to return factorial of num
     // Do not use:
     // - return
@@ -20,6 +25,7 @@ mod tests {
     fn factorial_of_1() {
         assert_eq!(1, factorial(1));
     }
+
     #[test]
     fn factorial_of_2() {
         assert_eq!(2, factorial(2));
@@ -30,29 +36,6 @@ mod tests {
         assert_eq!(24, factorial(4));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // In an imperative language you might write a for loop to iterate through
