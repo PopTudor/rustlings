@@ -14,6 +14,7 @@ use syntect::easy::HighlightFile;
 use syntect::highlighting::{Style, ThemeSet};
 use syntect::parsing::SyntaxSet;
 use syntect::util::as_24_bit_terminal_escaped;
+use std::fs::File;
 
 mod exercise;
 mod run;

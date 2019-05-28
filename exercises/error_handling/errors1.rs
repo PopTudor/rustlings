@@ -6,18 +6,21 @@
 // this function to have.
 // Scroll down for hints!!!
 
-pub fn generate_nametag_text(name: String) -> Option<String> {
+use std::string::ToString;
+
+pub fn generate_nametag_text(name: String) -> Result<String, String> {
     if name.len() > 0 {
-        Some(format!("Hi! My name is {}", name))
+        Ok(format!("Hi! My name is {}", name))
     } else {
         // Empty names aren't allowed.
-        None
+        Err("`name` was empty; it must be nonempty.".to_string())
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::convert::Into;
 
     // This test passes initially if you comment out the 2nd test.
     // You'll need to update what this test expects when you change
@@ -26,7 +29,7 @@ mod tests {
     fn generates_nametag_text_for_a_nonempty_name() {
         assert_eq!(
             generate_nametag_text("Beyoncé".into()),
-            Some("Hi! My name is Beyoncé".into())
+            Ok("Hi! My name is Beyoncé".into())
         );
     }
 
